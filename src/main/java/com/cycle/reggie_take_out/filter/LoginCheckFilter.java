@@ -32,6 +32,7 @@ public class LoginCheckFilter implements Filter {
                 "/employee/logout",
                 "/backend/**",
                 "/frontend/**",
+                "/common/**",
         };
         //判断请求路径是否需要放行
         boolean check = check(requestURI, urls);

@@ -6,8 +6,11 @@ import com.cycle.reggie_take_out.common.R;
 import com.cycle.reggie_take_out.entity.Category;
 import com.cycle.reggie_take_out.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/category")
@@ -71,4 +74,22 @@ public class CategoryController {
         categoryService.updateById(category);
         return R.success("修改分类成功");
     }
+    /**
+     * 根据条件查询分类
+     * @param category
+     * @return
+     */
+    @GetMapping("/list")
+    public R<List<Category>> list(Category category){
+        //条件构造器
+        LambdaQueryWrapper<Category> categoryLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        //添加查询条件
+        categoryLambdaQueryWrapper.eq(category.getType() != null, Category::getType, category.getType());
+        //添加排序条件
+        categoryLambdaQueryWrapper.orderByAsc(Category::getSort).orderByAsc(Category::getUpdateTime);
+        List<Category> list = categoryService.list(categoryLambdaQueryWrapper);
+        return R.success(list);
+    }
+
+
 }
