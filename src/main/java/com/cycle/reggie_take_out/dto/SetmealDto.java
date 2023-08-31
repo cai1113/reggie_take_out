@@ -1,11 +1,9 @@
 package com.cycle.reggie_take_out.dto;
 
-
-import com.cycle.reggie_take_out.entity.SetmealDish;
 import lombok.Data;
-
+import com.cycle.reggie_take_out.entity.Setmeal;
+import com.cycle.reggie_take_out.entity.SetmealDish;
 import java.util.List;
-
 
 @Data
 public class SetmealDto extends Setmeal {

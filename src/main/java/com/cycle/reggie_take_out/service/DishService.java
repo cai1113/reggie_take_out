@@ -5,5 +5,9 @@ import com.cycle.reggie_take_out.dto.DishDto;
 import com.cycle.reggie_take_out.entity.Dish;
 
 public interface DishService extends IService<Dish> {
-    void saveWithFlavors(DishDto dishDto);
+    public void saveWithFlavors(DishDto dishDto);
+
+    public DishDto getByIdWithFlavors(Long id);
+
+    public void updateWithFlavors(DishDto dishDto);
 }

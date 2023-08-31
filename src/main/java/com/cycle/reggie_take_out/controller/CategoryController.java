@@ -6,7 +6,6 @@ import com.cycle.reggie_take_out.common.R;
 import com.cycle.reggie_take_out.entity.Category;
 import com.cycle.reggie_take_out.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -90,6 +89,19 @@ public class CategoryController {
         List<Category> list = categoryService.list(categoryLambdaQueryWrapper);
         return R.success(list);
     }
+
+    /**
+     * 根据id查询分类
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public R<Category> get(@PathVariable Long id){
+        log.info("查询分类id：{}",id);
+        Category category = categoryService.getById(id);
+        return R.success(category);
+    }
+
 
 
 }
